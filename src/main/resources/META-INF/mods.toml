@@ -1,0 +1,37 @@
+modLoader="javafml"
+loaderVersion="[47,)"
+license="All Rights Reserved"
+
+[[mods]]
+modId="ldiediet"
+version="${file.jarVersion}"
+displayName="L'DieDiet"
+authors="LBD"
+description='''
+Food boredom system addon for Diet mod.
+Eating the same food repeatedly reduces its effectiveness until it barely provides any hunger/saturation.
+'''
+
+# Forge dependency
+[[dependencies.ldiediet]]
+modId="forge"
+mandatory=true
+versionRange="[47,)"
+ordering="NONE"
+side="BOTH"
+
+# Minecraft dependency
+[[dependencies.ldiediet]]
+modId="minecraft"
+mandatory=true
+versionRange="[1.20.1,1.21)"
+ordering="NONE"
+side="BOTH"
+
+# Diet mod - REQUIRED dependency
+[[dependencies.ldiediet]]
+modId="diet"
+mandatory=true
+versionRange="[2.0.0,)"
+ordering="AFTER"
+side="BOTH"

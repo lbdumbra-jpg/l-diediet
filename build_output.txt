@@ -1,0 +1,67 @@
+
+> Configure project :
+MixinGradle is skipping eclipse integration, extension not found
+Neither the 'eclipse' nor the 'idea' plugins were found, but IDE resource copy has been enabled.
+
+> Task :downloadMcpConfig
+> Task :extractSrg UP-TO-DATE
+> Task :createMcpToSrg UP-TO-DATE
+
+> Task :compileJava FAILED
+Note: SpongePowered MIXIN Annotation Processor Version=0.8.5 (MixinGradle Version=0.7)
+Note: Supported obfuscation types: ObfuscationServiceMCP supports [notch] ObfuscationServiceFG3 supports [searge]
+Note: Loading searge mappings from /home/lbd/Документы/L'animo/mods/l'diediet/build/createMcpToSrg/output.tsrg
+Note: Writing refmap to /home/lbd/Документы/L'animo/mods/l'diediet/build/tmp/compileJava/compileJava-refmap.json
+Note: Writing refmap to /home/lbd/Документы/L'animo/mods/l'diediet/build/tmp/compileJava/compileJava-refmap.json
+Note: Writing searge composite mappings to /home/lbd/Документы/L'animo/mods/l'diediet/build/tmp/compileJava/compileJava-mappings.tsrg
+/home/lbd/Документы/L'animo/mods/l'diediet/src/main/java/com/levbu/ldiediet/client/ClientPacketHandler.java:19: error: cannot find symbol
+    public static void handleSyncTolerance(SyncTolerancePacket msg) {
+                                           ^
+  symbol:   class SyncTolerancePacket
+  location: class ClientPacketHandler
+/home/lbd/Документы/L'animo/mods/l'diediet/src/main/java/com/levbu/ldiediet/client/ClientPacketHandler.java:29: error: cannot find symbol
+    public static void handleSyncFoodGroups(SyncFoodGroupsPacket msg) {
+                                            ^
+  symbol:   class SyncFoodGroupsPacket
+  location: class ClientPacketHandler
+Note: Writing refmap to /home/lbd/Документы/L'animo/mods/l'diediet/build/tmp/compileJava/compileJava-refmap.json
+Note: Writing refmap to /home/lbd/Документы/L'animo/mods/l'diediet/build/tmp/compileJava/compileJava-refmap.json
+Note: Writing searge composite mappings to /home/lbd/Документы/L'animo/mods/l'diediet/build/tmp/compileJava/compileJava-mappings.tsrg
+2 errors
+
+[Incubating] Problems report is available at: file:///home/lbd/%D0%94%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D1%8B/L'animo/mods/l'diediet/build/reports/problems/problems-report.html
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':compileJava'.
+> Compilation failed; see the compiler output below.
+  /home/lbd/Документы/L'animo/mods/l'diediet/src/main/java/com/levbu/ldiediet/client/ClientPacketHandler.java:19: error: cannot find symbol
+      public static void handleSyncTolerance(SyncTolerancePacket msg) {
+                                             ^
+    symbol:   class SyncTolerancePacket
+    location: class ClientPacketHandler
+  /home/lbd/Документы/L'animo/mods/l'diediet/src/main/java/com/levbu/ldiediet/client/ClientPacketHandler.java:29: error: cannot find symbol
+      public static void handleSyncFoodGroups(SyncFoodGroupsPacket msg) {
+                                              ^
+    symbol:   class SyncFoodGroupsPacket
+    location: class ClientPacketHandler
+  Note: SpongePowered MIXIN Annotation Processor Version=0.8.5 (MixinGradle Version=0.7)
+  Note: Supported obfuscation types: ObfuscationServiceMCP supports [notch] ObfuscationServiceFG3 supports [searge]
+  Note: Loading searge mappings from /home/lbd/Документы/L'animo/mods/l'diediet/build/createMcpToSrg/output.tsrg
+  Note: Writing refmap to /home/lbd/Документы/L'animo/mods/l'diediet/build/tmp/compileJava/compileJava-refmap.json
+  Note: Writing searge composite mappings to /home/lbd/Документы/L'animo/mods/l'diediet/build/tmp/compileJava/compileJava-mappings.tsrg
+  2 errors
+
+* Try:
+> Check your code and dependencies to fix the compilation error(s)
+> Run with --scan to get full insights.
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.14/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD FAILED in 2s
+4 actionable tasks: 2 executed, 2 up-to-date

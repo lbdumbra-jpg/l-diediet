@@ -1,0 +1,15 @@
+{
+    "ldiediet.tooltip.stage0": "Fresh",
+    "ldiediet.tooltip.stage1": "§eBoring: -25% hunger/saturation",
+    "ldiediet.tooltip.stage2": "§6Boring: -50%, no buffs",
+    "ldiediet.tooltip.stage3": "§cBoring: -75%, no buffs, -50% diet",
+    "ldiediet.tooltip.stage4": "§4Sick of it: -75%, no buffs, no diet gain",
+    "ldiediet.tooltip.progress": "Eaten: %d / %d",
+    "ldiediet.tooltip.recovery_hours": "Recovery: ~%dh %dm",
+    "ldiediet.tooltip.recovery_mins": "Recovery: ~%d min",
+    "ldiediet.tooltip.recovery_soon": "Recovery: soon",
+    "ldiediet.actionbar.stage1": "%s is starting to get boring...",
+    "ldiediet.actionbar.stage2": "%s is getting annoying!",
+    "ldiediet.actionbar.stage3": "%s is becoming unbearable!",
+    "ldiediet.actionbar.stage4": "%s is absolutely disgusting!"
+}
