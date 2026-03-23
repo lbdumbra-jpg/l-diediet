@@ -212,3 +212,28 @@
 ```
 
 Также предметы можно исключить полностью через тег предметов: `data/ldiediet/tags/items/excluded_foods.json`.
+
+## Достижения
+При добавлениии своих собственных достижений вы можете привязать выдачу достижения к группе. Для этого создайте достижение по этому шаблону
+
+```json
+{
+    "parent": "........",
+    "display": {
+        "icon": {
+            "item": "..........."
+        },
+        "title": "..........",
+        "description": "............",
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "award": {
+            "trigger": "minecraft:impossible"
+        }
+    }
+}
+```
