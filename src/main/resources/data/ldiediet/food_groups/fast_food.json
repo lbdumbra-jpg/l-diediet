@@ -1,0 +1,56 @@
+{
+  "name": "Фастфуд",
+  "advancement": "offseason:offseason_tab/bonus_fastfood",
+  "active_effect_text": "Больше жиров",
+  "flag": "-c",
+  "threshold": 5,
+  "hide_activation_message": false,
+  "require_unique": false,
+  "tooltip_icon": "🍔",
+  "tooltip_icon_color": "gold",
+  "items": [
+    "brewinandchewin:ham_and_cheese_sandwich",
+    "brewinandchewin:pizza_slice",
+    "brewinandchewin:kippers",
+    "farmersdelight:hamburger",
+    "alexsdelight:bunfungus_sandwich",
+    "alexsdelight:bison_burger",
+    "culturaldelights:mutton_sandwich",
+    "farmersdelight:bacon_sandwich",
+    "delightful:deluxe_cheeseburger",
+    "delightful:cheeseburger",
+    "endersdelight:steak_fries"
+  ],
+  "effects": [
+    {
+      "duration_type": "fixed",
+      "effect_type": "mob_effect",
+      "effect_id": "minecraft:slowness",
+      "amplifier": 0,
+      "duration_ticks": 12000,
+      "cancel_on_groups": [
+        "sacred_food"
+      ]
+    },
+    {
+      "duration_type": "until_death_intermittent",
+      "effect_type": "mob_effect",
+      "effect_id": "minecraft:hunger",
+      "amplifier": 0,
+      "interval_active_ticks": [
+        200,
+        200
+      ],
+      "interval_pause_ticks": [
+        1200,
+        1200
+      ],
+      "requires_active_groups": [
+        "temple_body"
+      ],
+      "cancel_on_groups": [
+        "sacred_food"
+      ]
+    }
+  ]
+}

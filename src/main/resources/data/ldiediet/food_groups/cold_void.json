@@ -1,0 +1,40 @@
+{
+  "name": "Холодная пустота",
+  "advancement": "offseason:offseason_tab/bonus_cold_heart",
+  "active_effect_text": "Даже не разогреть",
+  "flag": "-o",
+  "threshold": 7,
+  "hide_activation_message": false,
+  "require_unique": false,
+  "tooltip_icon": "❄",
+  "tooltip_icon_color": "aqua",
+  "items": [
+    "endersdelight:endermite_stew",
+    "endersdelight:chorus_stew",
+    "endersdelight:amberveil_stew",
+    "endersdelight:ender_paella",
+    "endersdelight:pearl_pasta",
+    "endersdelight:stuffed_shulker_bowl",
+    "endersdelight:stuffed_shulker",
+    "endersdelight:chicken_curry",
+    "endersdelight:veil_of_flames_risotto",
+    "endersdelight:steak_fries",
+    "endersdelight:crawling_sandwich",
+    "endersdelight:amberveiled_curry",
+    "endersdelight:crispy_skewer",
+    "endersdelight:twisted_cereal"
+  ],
+  "effects": [
+    {
+      "duration_type": "fixed",
+      "effect_type": "mob_effect",
+      "effect_id": "cold_sweat:ice_resistance",
+      "amplifier": 0,
+      "duration_ticks": 18000,
+      "cancel_on_groups": [
+        "tangible_heat",
+        "sacred_food"
+      ]
+    }
+  ]
+}

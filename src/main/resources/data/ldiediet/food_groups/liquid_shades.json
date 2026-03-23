@@ -1,0 +1,72 @@
+{
+  "name": "50 оттенков жидкости",
+  "advancement": "offseason:offseason_tab/bonus_liquid_50",
+  "active_effect_text": "Пить хочешь?",
+  "flag": "-o",
+  "threshold": 10,
+  "hide_activation_message": false,
+  "require_unique": false,
+  "tooltip_icon": "💧",
+  "tooltip_icon_color": "blue",
+  "items": [
+    "farmersrespite:green_tea",
+    "farmersrespite:yellow_tea",
+    "farmersrespite:black_tea",
+    "farmersrespite:rose_hip_tea",
+    "farmersrespite:dandelion_tea",
+    "farmersrespite:purulent_tea",
+    "farmersrespite:coffee",
+    "farmersrespite:long_green_tea",
+    "farmersrespite:long_yellow_tea",
+    "farmersrespite:long_black_tea",
+    "farmersrespite:long_rose_hip_tea",
+    "farmersrespite:long_dandelion_tea",
+    "farmersrespite:long_purulent_tea",
+    "farmersrespite:long_coffee",
+    "farmersrespite:long_apple_cider",
+    "farmersrespite:strong_green_tea",
+    "farmersrespite:strong_yellow_tea",
+    "farmersrespite:strong_black_tea",
+    "farmersrespite:strong_rose_hip_tea",
+    "farmersrespite:strong_purulent_tea",
+    "farmersrespite:strong_coffee",
+    "farmersrespite:strong_apple_cider",
+    "farmersrespite:gamblers_tea",
+    "farmersrespite:long_gamblers_tea",
+    "farmersrespite:strong_gamblers_tea",
+    "farmersrespite:strong_melon_juice",
+    "farmersrespite:strong_hot_cocoa",
+    "fruitsdelight:peach_tea",
+    "fruitsdelight:mango_tea",
+    "fruitsdelight:pear_juice",
+    "fruitsdelight:lemon_juice",
+    "fruitsdelight:orange_juice",
+    "fruitsdelight:hawberry_tea",
+    "fruitsdelight:hamimelon_juice",
+    "farmersdelight:hot_cocoa",
+    "farmersdelight:apple_cider",
+    "farmersdelight:melon_juice",
+    "abnormals_delight:passion_aloe_nectar",
+    "abnormals_delight:pickerelweed_juice",
+    "delightful:salmonberry_milkshake",
+    "delightful:matcha_milkshake"
+  ],
+  "effects": [
+    {
+      "duration_type": "fixed",
+      "effect_type": "mob_effect",
+      "effect_id": "farmersdelight:comfort",
+      "amplifier": 0,
+      "duration_ticks": 6000,
+      "cancel_on_groups": [
+        "sacred_food"
+      ]
+    },
+    {
+      "duration_type": "until_death",
+      "effect_type": "health",
+      "effect_id": "health_3",
+      "value": 2.0
+    }
+  ]
+}

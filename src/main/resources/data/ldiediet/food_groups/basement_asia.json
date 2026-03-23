@@ -1,0 +1,77 @@
+{
+  "name": "Подвальная Азия",
+  "advancement": "offseason:offseason_tab/bonus_basement_asia",
+  "active_effect_text": "Подготовь палочки!",
+  "flag": "-c",
+  "threshold": 5,
+  "hide_activation_message": false,
+  "require_unique": true,
+  "tooltip_icon": "🥢",
+  "tooltip_icon_color": "red",
+  "items": [
+    "farmersdelight:noodle_soup",
+    "tidesdelight:poke_bowl",
+    "tidesdelight:tuna_roll",
+    "tidesdelight:tuna_roll_slice",
+    "culturaldelights:chicken_roll",
+    "culturaldelights:egg_roll",
+    "culturaldelights:midori_roll_slice",
+    "culturaldelights:midori_roll",
+    "culturaldelights:calamari_roll",
+    "culturaldelights:rice_ball",
+    "culturaldelights:tropical_roll",
+    "culturaldelights:pufferfish_roll",
+    "culturaldelights:chicken_roll_slice",
+    "delightful:sinigang",
+    "delightful:sinigang_cup",
+    "farmersrespite:tea_curry",
+    "oceanic_delight:egg_roll",
+    "oceanic_delight:shrimp_roll",
+    "culturaldelights:spicy_curry",
+    "oceanic_delight:sea_pickle_roll",
+    "oceanic_delight:sea_pickle_roll_slice",
+    "oceanic_delight:fish_egg_roll",
+    "oceanic_delight:fish_egg_roll_slice",
+    "oceanic_delight:fish_egg_noodle_soup",
+    "oceanic_delight:shrimp_stew",
+    "oceanic_delight:shrimp_rice",
+    "oceanic_delight:squid_and_pickles",
+    "oceanic_delight:bowl_of_paella",
+    "oceanic_delight:paella_plate",
+    "oceanic_delight:fried_shrimp",
+    "oceanic_delight:takoyaki",
+    "oceanic_delight:shrimp_chips",
+    "mynethersdelight:giant_takoyaki",
+    "miners_delight:takoyaki",
+    "crabbersdelight:shrimp_fried_rice",
+    "brewinandchewin:pickled_pickles",
+    "brewinandchewin:kimchi",
+    "farmersdelight:salmon_roll",
+    "farmersdelight:kelp_roll",
+    "farmersdelight:kelp_roll_slice",
+    "farmersdelight:cod_roll",
+    "quarkdelight:miso_with_bamboo_sprouts"
+  ],
+  "effects": [
+    {
+      "duration_type": "fixed",
+      "effect_type": "mob_effect",
+      "effect_id": "minecraft:regeneration",
+      "amplifier": 0,
+      "duration_ticks": 3600,
+      "cancel_on_groups": [
+        "sacred_food"
+      ]
+    },
+    {
+      "duration_type": "fixed",
+      "effect_type": "mob_effect",
+      "effect_id": "minecraft:speed",
+      "amplifier": 0,
+      "duration_ticks": 3600,
+      "cancel_on_groups": [
+        "sacred_food"
+      ]
+    }
+  ]
+}

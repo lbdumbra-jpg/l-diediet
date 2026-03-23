@@ -1,0 +1,35 @@
+{
+  "name": "Завтрак чемпиона",
+  "advancement": "offseason:offseason_tab/bonus_champion_breakfast",
+  "active_effect_text": "Достаточно белка?",
+  "flag": "-c",
+  "threshold": 3,
+  "hide_activation_message": false,
+  "require_unique": true,
+  "tooltip_icon": "💪",
+  "tooltip_icon_color": "gold",
+  "items": [
+    "mynethersdelight:breakfast_sampler",
+    "mynethersdelight:scotch_eggs",
+    "mynethersdelight:boiled_egg",
+    "farmersdelight:bacon_and_eggs",
+    "fruitsdelight:orange_juice",
+    "mynethersdelight:toasts",
+    "culturaldelights:hearty_salad",
+    "culturaldelights:avocado_toast",
+    "farmersdelight:fried_egg",
+    "farmersdelight:egg_sandwich"
+  ],
+  "effects": [
+    {
+      "duration_type": "fixed",
+      "effect_type": "mob_effect",
+      "effect_id": "minecraft:strength",
+      "amplifier": 0,
+      "duration_ticks": 12000,
+      "cancel_on_groups": [
+        "sacred_food"
+      ]
+    }
+  ]
+}

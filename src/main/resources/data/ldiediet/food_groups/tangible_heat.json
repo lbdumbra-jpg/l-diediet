@@ -1,0 +1,44 @@
+{
+  "name": "Осязаемый жар",
+  "advancement": "offseason:offseason_tab/bonus_spicy_heat",
+  "active_effect_text": "Острое!",
+  "flag": "-o",
+  "threshold": 7,
+  "hide_activation_message": false,
+  "require_unique": false,
+  "tooltip_icon": "🔥",
+  "tooltip_icon_color": "red",
+  "items": [
+    "mynethersdelight:deviled_egg",
+    "mynethersdelight:spicy_noodle_soup",
+    "miners_delight:spicy_hoglin_stew_cup",
+    "mynethersdelight:hot_wings_bucket",
+    "mynethersdelight:hot_wings",
+    "mynethersdelight:spicy_hoglin_stew",
+    "mynethersdelight:chilidog",
+    "mynethersdelight:spicy_skewer",
+    "mynethersdelight:stuffed_pepper",
+    "mynethersdelight:magma_cake_slice",
+    "mynethersdelight:burnt_roll",
+    "mynethersdelight:rock_soup",
+    "mynethersdelight:spicy_curry",
+    "mynethersdelight:hot_cream",
+    "mynethersdelight:hot_cream_cone",
+    "miners_delight:rock_soup_cup",
+    "miners_delight:spicy_noodle_soup_cup",
+    "call_of_yucutan:chili_pepper"
+  ],
+  "effects": [
+    {
+      "duration_type": "fixed",
+      "effect_type": "mob_effect",
+      "effect_id": "minecraft:fire_resistance",
+      "amplifier": 0,
+      "duration_ticks": 18000,
+      "cancel_on_groups": [
+        "cold_void",
+        "sacred_food"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "name": "Фрукторианство",
+  "advancement": "offseason:offseason_tab/bonus_fruitarian",
+  "active_effect_text": "Фруктово-ягодное...",
+  "flag": "-c",
+  "threshold": 7,
+  "hide_activation_message": false,
+  "require_unique": true,
+  "tooltip_icon": "🍎",
+  "tooltip_icon_color": "red",
+  "items": [
+    "fruitsdelight:blueberry_custard",
+    "fruitsdelight:bellini_cocktail",
+    "fruitsdelight:hamimelon_popsicle",
+    "fruitsdelight:kiwi_popsicle",
+    "fruitsdelight:hamimelon_shaved_ice",
+    "fruitsdelight:hawberry_roll",
+    "fruitsdelight:hawberry_sheet",
+    "fruitsdelight:hawberry_stick",
+    "fruitsdelight:baked_pear",
+    "fruitsdelight:mango_milkshake",
+    "fruitsdelight:mango_salad",
+    "fruitsdelight:pear_with_rock_sugar",
+    "fruitsdelight:fig_chicken_stew",
+    "fruitsdelight:bowl_of_pineapple_fried_rice",
+    "fruitsdelight:pineapple_marinated_pork",
+    "fruitsdelight:apple_jello",
+    "fruitsdelight:blueberry_jello",
+    "fruitsdelight:glowberry_jello",
+    "fruitsdelight:hamimelon_jello",
+    "fruitsdelight:melon_jello",
+    "fruitsdelight:hawberry_jello",
+    "fruitsdelight:lychee_jello",
+    "fruitsdelight:mango_jello",
+    "fruitsdelight:orange_jello",
+    "fruitsdelight:peach_jello",
+    "fruitsdelight:pear_jello",
+    "fruitsdelight:persimmon_jello",
+    "fruitsdelight:mangosteen_jello",
+    "fruitsdelight:cranberry_jello",
+    "fruitsdelight:lemon_jello",
+    "fruitsdelight:pineapple_jello",
+    "fruitsdelight:sweetberry_jello",
+    "fruitsdelight:chorus_jello",
+    "fruitsdelight:bayberry_jello",
+    "fruitsdelight:kiwi_jello",
+    "fruitsdelight:fig_jello",
+    "fruitsdelight:durian_jello",
+    "fruitsdelight:jelly_bread"
+  ],
+  "effects": [
+    {
+      "duration_type": "until_death",
+      "effect_type": "health",
+      "effect_id": "health_1",
+      "value": 2.0,
+      "cancel_on_groups": [
+        "sacred_food"
+      ]
+    },
+    {
+      "duration_type": "fixed",
+      "effect_type": "mob_effect",
+      "effect_id": "minecraft:haste",
+      "amplifier": 0,
+      "duration_ticks": 18000,
+      "cancel_on_groups": [
+        "sacred_food"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+    "name": "Заначка шахтёра",
+    "advancement": "offseason:offseason_tab/bonus_rudokop",
+    "active_effect_text": "Отобрал у крота",
+    "flag": "-c",
+    "threshold": 7,
+    "hide_activation_message": false,
+    "require_unique": false,
+    "tooltip_icon": "⛏",
+    "tooltip_icon_color": "gray",
+    "items": [
+        "miners_delight:cave_soup",
+        "miners_delight:improvised_barbecue_stick",
+        "miners_delight:bat_soup",
+        "miners_delight:weird_caviar",
+        "miners_delight:seasoned_arthropods",
+        "miners_delight:bat_cookie",
+        "miners_delight:bat_rolls",
+        "miners_delight:smoked_bat_wing",
+        "miners_delight:copper_carrot",
+        "miners_delight:baked_cave_carrot",
+        "miners_delight:cave_carrot",
+        "miners_delight:pasta_with_veggieballs",
+        "miners_delight:glow_squid",
+        "miners_delight:baked_squid",
+        "miners_delight:baked_tentacles",
+        "miners_delight:tentacles",
+        "miners_delight:squid_sandwich",
+        "miners_delight:takoyaki",
+        "miners_delight:bowl_of_stuffed_squid",
+        "miners_delight:glow_ink_pasta",
+        "miners_delight:squid",
+        "miners_delight:improvised_barbecue_stick",
+        "miners_delight:vegan_steak_and_potatoes",
+        "miners_delight:silverfish_eggs",
+        "miners_delight:arthropod",
+        "miners_delight:cooked_arthropod",
+        "miners_delight:insect_sandwich",
+        "miners_delight:insect_wrap",
+        "miners_delight:insect_stew"
+    ],
+    "effects": [
+        {
+            "duration_type": "fixed",
+            "effect_type": "mob_effect",
+            "effect_id": "minecraft:night_vision",
+            "amplifier": 0,
+            "duration_ticks": 6000,
+            "cancel_on_groups": [
+                "sacred_food"
+            ]
+        }
+    ]
+}

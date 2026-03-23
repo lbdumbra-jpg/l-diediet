@@ -1,0 +1,32 @@
+{
+  "name": "Священная еда",
+  "active_effect_text": "Святой",
+  "flag": "-o",
+  "threshold": 1,
+  "hide_activation_message": true,
+  "require_unique": false,
+  "tooltip_icon": "✨",
+  "tooltip_icon_color": "gold",
+  "items": [
+    "immersive_weathering:enchanted_golden_moss_clump",
+    "minecraft:enchanted_golden_apple",
+    "minecraft:golden_carrot",
+    "galosphere:golden_lichen_cordyceps",
+    "atmospheric:golden_dragon_fruit",
+    "atmospheric:shimmering_passion_fruit",
+    "immersive_weathering:golden_moss_clump",
+    "minecraft:golden_apple"
+  ],
+  "effects": [
+    {
+      "duration_type": "fixed",
+      "effect_type": "mob_effect",
+      "effect_id": "minecraft:regeneration",
+      "amplifier": 0,
+      "duration_ticks": 3600,
+      "requires_active_groups": [
+        "temple_body"
+      ]
+    }
+  ]
+}

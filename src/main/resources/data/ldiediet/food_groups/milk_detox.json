@@ -1,0 +1,54 @@
+{
+  "name": "Молочная чистка",
+  "active_effect_text": "Очищение организма",
+  "flag": "-o",
+  "threshold": 1,
+  "hide_activation_message": true,
+  "require_unique": false,
+  "tooltip_icon": "🥛",
+  "tooltip_icon_color": "white",
+  "items": [
+    "minecraft:milk_bucket"
+  ],
+  "effects": [
+    {
+      "duration_type": "fixed",
+      "effect_type": "mob_effect",
+      "effect_id": "minecraft:nausea",
+      "amplifier": 0,
+      "duration_ticks": 3600,
+      "requires_active_groups": [
+        "sea_world"
+      ],
+      "cancel_on_groups": [
+        "sacred_food"
+      ]
+    },
+    {
+      "duration_type": "fixed",
+      "effect_type": "mob_effect",
+      "effect_id": "minecraft:nausea",
+      "amplifier": 0,
+      "duration_ticks": 3600,
+      "requires_active_groups": [
+        "basement_asia"
+      ],
+      "cancel_on_groups": [
+        "sacred_food"
+      ]
+    },
+    {
+      "duration_type": "fixed",
+      "effect_type": "mob_effect",
+      "effect_id": "minecraft:speed",
+      "amplifier": 0,
+      "duration_ticks": 3600,
+      "requires_active_groups": [
+        "champion_breakfast"
+      ],
+      "cancel_on_groups": [
+        "sacred_food"
+      ]
+    }
+  ]
+}

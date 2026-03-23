@@ -1,0 +1,63 @@
+{
+  "name": "Базовый минимум",
+  "advancement": "offseason:offseason_tab/bonus_base_minimum",
+  "active_effect_text": "Неполноценное питание",
+  "flag": "-c",
+  "threshold": 7,
+  "hide_activation_message": false,
+  "require_unique": false,
+  "tooltip_icon": "🍞",
+  "tooltip_icon_color": "yellow",
+  "items": [
+    "minecraft:sweet_berries",
+    "minecraft:apple",
+    "minecraft:carrot",
+    "minecraft:cooked_beef",
+    "minecraft:cooked_porkchop",
+    "minecraft:cooked_mutton",
+    "minecraft:cooked_chicken",
+    "minecraft:baked_potato",
+    "minecraft:mutton",
+    "minecraft:porkchop",
+    "minecraft:beef",
+    "minecraft:potato",
+    "minecraft:bread",
+    "fruitsdelight:bayberry",
+    "fruitsdelight:orange",
+    "fruitsdelight:mango",
+    "fruitsdelight:pear",
+    "farmersdelight:onion",
+    "farmersdelight:tomato",
+    "farmersdelight:cabbage",
+    "fruitsdelight:kiwi",
+    "fruitsdelight:persimmon",
+    "fruitsdelight:hawberry",
+    "fruitsdelight:pineapple_slice",
+    "fruitsdelight:lemon",
+    "fruitsdelight:fig",
+    "fruitsdelight:mangosteen",
+    "fruitsdelight:hamimelon_slice",
+    "fruitsdelight:blueberry",
+    "fruitsdelight:cranberry",
+    "fruitsdelight:lychee",
+    "fruitsdelight:peach",
+    "minecraft:melon_slice",
+    "delightful:roasted_acorn",
+    "delightful:acorn",
+    "minecraft:rotten_flesh",
+    "delightful:salmonberries",
+    "minecraft:spider_eye"
+  ],
+  "effects": [
+    {
+      "duration_type": "fixed",
+      "effect_type": "mob_effect",
+      "effect_id": "farmersdelight:comfort",
+      "amplifier": 0,
+      "duration_ticks": 2400,
+      "cancel_on_groups": [
+        "sacred_food"
+      ]
+    }
+  ]
+}

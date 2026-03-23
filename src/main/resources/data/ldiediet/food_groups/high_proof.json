@@ -1,0 +1,64 @@
+{
+  "name": "Высокий градус",
+  "advancement": "offseason:offseason_tab/bonus_high_alcohol",
+  "active_effect_text": "Какая по счету?",
+  "flag": "-o",
+  "threshold": 7,
+  "hide_activation_message": false,
+  "require_unique": false,
+  "tooltip_icon": "🍺",
+  "tooltip_icon_color": "gold",
+  "items": [
+    "brewinandchewin:withering_dross",
+    "brewinandchewin:dread_nog",
+    "brewinandchewin:steel_toe_stout",
+    "brewinandchewin:red_rum",
+    "brewinandchewin:strongroot_ale",
+    "brewinandchewin:bloody_mary",
+    "brewinandchewin:kombucha",
+    "brewinandchewin:beer",
+    "brewinandchewin:vodka",
+    "brewinandchewin:mead",
+    "brewinandchewin:rice_wine",
+    "brewinandchewin:pale_jane",
+    "brewinandchewin:egg_grog",
+    "brewinandchewin:glittering_grenadine",
+    "brewinandchewin:saccharine_rum",
+    "brewinandchewin:salty_folly",
+    "grapesseasonstuff:mango_sling_coctail",
+    "grapesseasonstuff:pina_colada_coctail",
+    "grapesseasonstuff:sangria_coctail",
+    "grapesseasonstuff:mojito_coctail"
+  ],
+  "effects": [
+    {
+      "duration_type": "until_death_intermittent",
+      "effect_type": "mob_effect",
+      "effect_id": "minecraft:nausea",
+      "amplifier": 0,
+      "interval_active_ticks": [
+        100,
+        200
+      ],
+      "interval_pause_ticks": [
+        400,
+        800
+      ],
+      "cancel_on_groups": [
+        "temple_body"
+      ]
+    },
+    {
+      "duration_type": "until_death",
+      "effect_type": "health",
+      "effect_id": "health_2",
+      "value": -4.0,
+      "requires_active_groups": [
+        "temple_body"
+      ],
+      "cancel_on_groups": [
+        "sacred_food"
+      ]
+    }
+  ]
+}

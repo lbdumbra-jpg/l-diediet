@@ -1,0 +1,98 @@
+{
+  "name": "Тело - храм",
+  "advancement": "offseason:offseason_tab/bonus_temple_body",
+  "active_effect_text": "Грязная еда",
+  "flag": "-c",
+  "threshold": 10,
+  "hide_activation_message": false,
+  "require_unique": true,
+  "tooltip_icon": "⛪",
+  "tooltip_icon_color": "white",
+  "items": [
+    "fruitsdelight:pineapple_marinated_pork",
+    "fruitsdelight:orange_marinated_pork",
+    "buzzier_bees:glazed_porkchop",
+    "minecraft:cooked_porkchop",
+    "minecraft:porkchop",
+    "farmersdelight:bacon_and_eggs",
+    "farmersdelight:bacon_sandwich",
+    "farmersdelight:cooked_bacon",
+    "farmersdelight:bacon",
+    "culturaldelights:pork_wrap",
+    "mynethersdelight:spicy_hoglin_stew",
+    "mynethersdelight:plate_of_stuffed_hoglin",
+    "mynethersdelight:plate_of_stuffed_hoglin_ham",
+    "mynethersdelight:plate_of_stuffed_hoglin_snout",
+    "mynethersdelight:fried_hoglin_chop",
+    "mynethersdelight:cooked_loin",
+    "mynethersdelight:hoglin_sausage",
+    "mynethersdelight:hoglin_loin",
+    "miners_delight:spicy_hoglin_stew_cup",
+    "alexsmobs:sopa_de_macaco",
+    "farmersdelight:bone_broth",
+    "naturalist:lizard_tail",
+    "naturalist:cooked_lizard_tail",
+    "mynethersdelight:bleeding_tartar",
+    "naturalist:cooked_bushmeat",
+    "abnormals_delight:maple_glazed_bacon",
+    "brewinandchewin:withering_dross",
+    "brewinandchewin:dread_nog",
+    "brewinandchewin:steel_toe_stout",
+    "brewinandchewin:red_rum",
+    "brewinandchewin:glittering_grenadine",
+    "brewinandchewin:strongroot_ale",
+    "brewinandchewin:bloody_mary",
+    "brewinandchewin:kombucha",
+    "brewinandchewin:beer",
+    "brewinandchewin:salty_folly",
+    "brewinandchewin:saccharine_rum",
+    "brewinandchewin:egg_grog",
+    "brewinandchewin:pale_jane",
+    "brewinandchewin:rice_wine",
+    "brewinandchewin:mead",
+    "brewinandchewin:vodka"
+  ],
+  "effects": [
+    {
+      "duration_type": "until_death",
+      "effect_type": "overlay",
+      "effect_id": "grayscale",
+      "value": 1.0,
+      "cancel_on_groups": [
+        "sacred_food"
+      ]
+    },
+    {
+      "duration_type": "until_death",
+      "effect_type": "health",
+      "effect_id": "health_2",
+      "value": -4.0,
+      "requires_active_groups": [
+        "high_proof"
+      ],
+      "cancel_on_groups": [
+        "sacred_food"
+      ]
+    },
+    {
+      "duration_type": "until_death_intermittent",
+      "effect_type": "mob_effect",
+      "effect_id": "minecraft:hunger",
+      "amplifier": 0,
+      "interval_active_ticks": [
+        200,
+        200
+      ],
+      "interval_pause_ticks": [
+        1200,
+        1200
+      ],
+      "requires_active_groups": [
+        "fast_food"
+      ],
+      "cancel_on_groups": [
+        "sacred_food"
+      ]
+    }
+  ]
+}
