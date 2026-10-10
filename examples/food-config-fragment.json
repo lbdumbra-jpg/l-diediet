@@ -1,0 +1,13 @@
+{
+  "schema_version": 2,
+  "overrides": {
+    "minecraft:bread": {
+      "cci": 2,
+      "cci_source": "manual",
+      "nutrients": {
+        "carbohydrates": 0.8,
+        "mypack:protein": 0.2
+      }
+    }
+  }
+}

@@ -10,7 +10,7 @@
         "number"
       ],
       "minLength": 1,
-      "description": "Expression checked by /ldiediet validate; see MODPACK_AUTHOR_RU.md for its available variables.",
+      "description": "Expression checked by /ldiediet validate; see https://github.com/lbdumbra-jpg/l-diediet/blob/main/README_MODPACK_AUTHORS.md for its available variables.",
       "default": "average_ingredients_cci + 0.4 * sqrt(max(0, ingredients_count - 1)) + stages_weight"
     },
     "monotony_increase": {
@@ -19,7 +19,7 @@
         "number"
       ],
       "minLength": 1,
-      "description": "Expression checked by /ldiediet validate; see MODPACK_AUTHOR_RU.md for its available variables."
+      "description": "Expression checked by /ldiediet validate; see https://github.com/lbdumbra-jpg/l-diediet/blob/main/README_MODPACK_AUTHORS.md for its available variables."
     },
     "catalyst_formula": {
       "type": [
@@ -27,7 +27,7 @@
         "number"
       ],
       "minLength": 1,
-      "description": "Expression checked by /ldiediet validate; see MODPACK_AUTHOR_RU.md for its available variables."
+      "description": "Expression checked by /ldiediet validate; see https://github.com/lbdumbra-jpg/l-diediet/blob/main/README_MODPACK_AUTHORS.md for its available variables."
     },
     "debuff_factor": {
       "type": [
@@ -35,7 +35,7 @@
         "number"
       ],
       "minLength": 1,
-      "description": "Expression checked by /ldiediet validate; see MODPACK_AUTHOR_RU.md for its available variables."
+      "description": "Expression checked by /ldiediet validate; see https://github.com/lbdumbra-jpg/l-diediet/blob/main/README_MODPACK_AUTHORS.md for its available variables."
     },
     "recovery_formula": {
       "type": [
@@ -43,7 +43,7 @@
         "number"
       ],
       "minLength": 1,
-      "description": "Expression checked by /ldiediet validate; see MODPACK_AUTHOR_RU.md for its available variables."
+      "description": "Expression checked by /ldiediet validate; see https://github.com/lbdumbra-jpg/l-diediet/blob/main/README_MODPACK_AUTHORS.md for its available variables."
     },
     "nutrient_add": {
       "type": [
@@ -51,7 +51,7 @@
         "number"
       ],
       "minLength": 1,
-      "description": "Expression checked by /ldiediet validate; see MODPACK_AUTHOR_RU.md for its available variables.",
+      "description": "Expression checked by /ldiediet validate; see https://github.com/lbdumbra-jpg/l-diediet/blob/main/README_MODPACK_AUTHORS.md for its available variables.",
       "default": "base_n * stage_multiplier"
     },
     "recovery_mode": {

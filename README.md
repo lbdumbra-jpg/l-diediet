@@ -1,239 +1,73 @@
-# 🥗 L'DieDiet
-**L'DieDiet** — это система «приедания» еды для Minecraft, разработанная специально для интеграции с модом **Diet**. Она заставляет игроков разнообразить свой рацион, вводя систему накопления привыкания к продуктам, а так же систему кастомных групп еды.
+# L’DieDiet
 
----
+Food variety, nutrition, and rewards for **Minecraft Java 1.20.1 / Forge 47.x**. Requires Java 17. Version 2.0.0. MIT licensed.
 
-## Основные возможности
-*   **Стадии надоедания**: Чем больше вы едите один и тот же продукт, тем меньше пользы он приносит. Всего 5 стадий — от «Свежего» до полного отвращения.
-*   **Штрафы**: На высоких стадиях еда восстанавливает меньше голода и насыщения, а также перестает давать полезные эффекты.
-*   **Интеграция с Diet**: Мод учитывает ваши показатели диеты и корректирует их. Если вы едите одно и то же, ваш прогресс в Diet будет замедляться.
-*   **Система наград**: За длительное поддержание разнообразного рациона вы можете получать уникальные баффы.
+Eating the same meal eventually gets old. L’DieDiet encourages you to try other foods, maintain your nutrition, and discover rewards for food combinations. A varied diet restores your appetite for earlier meals.
 
-### Стадии надоедания
-Система L'DieDiet делит «надоедливость» каждого продукта на 5 стадий (0-4). Прогресс зависит от того, сколько раз подряд (или в течение истории) вы съели один и тот же предмет.
+[Download the mod](https://github.com/lbdumbra-jpg/l-diediet/releases/tag/v2.0.0) · [Get datapacks](https://github.com/lbdumbra-jpg/l-diediet-datapacks/releases/tag/v2.0.0) · [Modpack Author Guide](README_MODPACK_AUTHORS.md) · [Developer API](docs/INTEGRATION_API.md)
 
-Механика стадий (по умолчанию)
-| Стадия | Название | Признаки и штрафы |
-| :---: | :--- | :--- |
-| **0** | **Свежее** | Еда приносит 100% пользы. Все положительные эффекты применяются в обычном режиме. |
-| **1** | **Достаточно** | Штраф -25% к восстановлению голода и насыщения. Вы начинаете привыкать к вкусу. |
-| **2** | **Приелось** | -50% голода/насыщения. Баффы отключаются: любая магия или бонусы от этой еды больше не действуют. |
-| **3** | **Противно** | -75% голода. Штраф -50% к росту показателей в моде Diet. Насыщение почти не растет. |
-| **4** | **Отвращение** | -100% прибавки в Diet (показатели не растут совсем). Голод восстанавливается на минимум. |
+## Player features
 
-Стадии спадают со временем, регулируется в RECOVERY_TIME_TICKS + RECOVERY_MULT_2_STATS
+- Five stages for each food, from fresh to aversion. Stages affect hunger and saturation restoration, eating time, nutrition gain, and allowed beneficial food effects.
+- Appetite recovery by eating other nutritious foods. Waiting alone does not restore it.
+- A journal on **N**, with nutrition, eaten foods, groups, and active effects. View effect sources and portions remaining to each stage boundary.
+- Configurable nutrition scales, fill-based bonuses, and natural decay as hunger is spent.
+- Food groups with rewards and achievements. Secret groups reveal themselves after their first effective reward activation.
+- English and Russian interfaces. Resource packs can replace translations, presentation, and icons.
 
-### ДИНАМИЧЕСКИЕ ПОРОГИ - зависимость перехода на новую стадию от количества атрибутов мода Diet
+## Installation
 
-Пример:
-Голое яблоко: Дает только 1 стат в Diet (Fruit). Мод берет базовый список порогов: [5, 12, 20, 30]. Сложное рагу: Дает, скажем, 3 стата в Diet (Grains, Protein, Vegetables). Конфиг: THRESHOLDS_3_STATS - [8, 18, 28, 40].
+1. Install Minecraft 1.20.1, Forge 47.x, and Java 17.
+2. Put the release JAR in `mods`. Multiplayer requires the mod on both server and clients.
+3. For predefined nutrition scales and groups, install **one** separate datapack ZIP in `<world>/datapacks`. Do not unzip it; `pack.mcmeta` is at the archive root.
+4. Run `/reload` and check `/datapack list enabled`. Open the journal with N, configurable in Controls.
 
-### БОНУС РАЗНООБРАЗИЯ - ускорение спадения стадии в зависимости от разнообраазия питания
-Как считается бонус: Мод берет вашу историю последних съеденных блюд (длина истории задается в REWARD_HISTORY_LENGTH) и считает в ней уникальные предметы.
+GitHub normalizes the uploaded JAR filename to `l.diediet_2.0.0.jar`. Both it and the JAR inside `LDieDiet-2.0.0.zip` work. The ZIP preserves the original filename `l'diediet_2.0.0.jar`; extract that JAR before installing it in `mods`.
 
-Формула: Множитель = 1.0 + (Уникальное_количество * VARIETY_RECOVERY_BONUS_PER_FOOD).
+Habituation works independently. Groups, scales, and rewards are no longer bundled as an installable datapack inside the mod JAR: install a datapack or provide supported Diet data.
 
-Допустим, бонус за каждый продукт = 0.1 (10%). Вы ели 5 разных видов еды. Множитель = 1.5. Базовое время восстановления — 10 минут. Время восстановления при разнообразном питании - 10/1.5= 6.6 минут
+## Separate datapacks
 
-### Всё, что возможно настроить в конфигах:
+| Pack | Contents |
+|---|---|
+| **All of Food** | Current FreshCraft food/drink catalog: 1091 IDs, 17 original categories, six nutrition scales, achievements, and saved CCI profiles. |
+| **All of Food Vanilla** | 43 vanilla food/drink IDs, 11 applicable categories, six scales, and achievements. Requires only L’DieDiet. |
+| **LDieDiet Original** | Original 17 groups, scales, exclusions, and formulas extracted from the mod. Original external effects, conditions, and achievement references are preserved. |
 
-	#Базовые пороги стадий
-	#Множители восстановления голода по стадиям
-	#Время полного восстановления в тиках
-	#Минимальное количество голода, которое еда всегда восстанавливает
-	#Количество последних съеденных продуктов, запоминаемых для наград
-	#Применять штраф надоедания к насыщению
-	#Включить интеграцию с модом Diet
-	#Применять штраф надоедания к Diet статам на стадии 3+
-	#Включить бонусные пороги для еды с несколькими diet статами
-	#Еда с большим количеством статов получает повышенные пороги стадий
-	#Включить штраф времени восстановления для еды с несколькими diet статами
-	#Еда с большим количеством статов медленнее восстанавливается
-  	#Множители Diet статов по стадиям надоедания
-	#Стадия 3: множитель положительных diet статов
-	#Стадия 3: множитель отрицательных diet статов
-	#Стадия 4: множитель положительных diet статов
-	#Стадия 4: множитель отрицательных diet статов
-  	#Бонусные пороги стадий для еды с несколькими diet статами
-	#Пороги для еды с 2 diet статами: [стадия1, стадия2, стадия3, стадия4]
-	#Пороги для еды с 3 diet статами
-	#Пороги для еды с 4 diet статами
-	#Пороги для еды с 5 diet статами
- 	 #Штрафы времени восстановления для еды с несколькими diet статами
-	#Множитель времени восстановления для еды с 2 diet статами
-	#Множитель времени восстановления для еды с 3 diet статами
-	#Множитель времени восстановления для еды с 4 diet статами
-	#Множитель времени восстановления для еды с 5 diet статами
- 	 #Бонус разнообразия - ускорение восстановления за разную еду
-	#Бонус к скорости восстановления за каждый продукт на стадии 1+
+[Datapack source and installation details](https://github.com/lbdumbra-jpg/l-diediet-datapacks)
 
----
+All of Food reflects the FreshCraft registry exported on October 10, 2026. Foods from newly added mods need new profiles/membership. `food-assignments.csv` lists assignments and `coverage.json` summarizes coverage. Foods may belong to multiple groups. Splash/lingering potions are excluded from the catalog; ordinary potions are counted as drinks but excluded from habituation.
 
-## Кастмные группы еды
-По умолчанию есть 17 групп, на основе которых можно узнать функционал мода:
+The variants share group/scale IDs: install one variant per world. Original retains source-pack dependencies; choose Vanilla for ordinary Minecraft.
 
-1. Базовый минимум 
-	Иконка: 🍞 (желтая) | Флаг: -c (Подряд)
-	Порог: 7 (любые предметы)
-	Эффект: Утешение (Comfort) на 2 минуты.
-	Конфликты: Эффект мгновенно снимается при активации Священной еды.
-2. Подвальная Азия
-	Иконка: 🥢 (красная) | Флаг: -c (Подряд)
-	Порог: 5 (Уникальные предметы)
-	Эффект: Регенерация и Скорость на 3 минуты.
-	Конфликты: Снимается Священной едой. Вызывает тошноту при попытке запить молоком (Молочная чистка).
-3. Завтрак чемпиона
-	Иконка: 💪 (золотая) | Флаг: -c (Подряд)
-	Порог: 3 (Уникальные предметы)
-	Эффект: Сила на 10 минут.
-	Конфликты: Снимается Священной едой. Позволяет легче переносить диету "Для травоядных" (снимает их негативные эффекты).
-5. Холодная пустота
-	Иконка: ❄ (бирюзовая) | Флаг: -o (В истории)
-	Порог: 7 (любые предметы)
-	Эффект: Сопротивление льду (Ice Resistance) на 15 минут.
-	Конфликты: Взаимный конфликт с Осязаемым жаром (эффекты отменяют друг друга). Снимается Священной едой.
-5. Фастфуд
-	Иконка: 🍔 (золотая) | Флаг: -c (Подряд)
-	Порог: 5 (любые предметы)
-	Эффект: Замедление на 10 минут.
-	Зависимость: Если активно Тело — храм, дополнительно вызывает периодический голод.
-6. Фрукторианство
-	Иконка: 🍎 (красная) | Флаг: -c (Подряд)
-	Порог: 7 (Уникальные предметы)
-	Эффект: Бонус +1 сердце (2.0 HP) и Спешка на 15 минут (постоянно обновляется).
-7. Для травоядных 
-	Иконка: 🌿 (зеленая) | Флаг: -o (В истории)
-	Порог: 5 (Уникальные предметы)
-	Эффект: Постоянная Слабость и периодическая Тошнота.
-	Конфликты: Негативные эффекты снимаются при активации Завтрака чемпиона или Священной еды.
-8. Высокий градус
-	Иконка: 🍺 (золотая) | Флаг: -o (В истории)
-	Порог: 7 (любые предметы)
-	Эффект: Периодическая тошнота (постоянно, до очистки).
-	Зависимость: Если активно Тело — храм, наносит тяжелый урон здоровью (-4.0 HP / 2 сердца).
-9. 50 оттенков жидкости 
-	Иконка: 💧 (синяя) | Флаг: -o (В истории)
-	Порог: 10 (любые предметы)
-	Эффект: Утешение (Comfort) на 5 минут и постоянный бонус +1 сердце (+2.0 HP).
-10. Молочная чистка 
-	Иконка: 🥛 (белая) | Флаг: -o (В истории)
-	Порог: 1 (ведро молока)
-	Эффект: Вызывает тошноту на 3 минуты, если съедены морепродукты (Морской мир) или азиатская еда (Подвальная Азия).
-	Бонус: Дает Скорость на 3 минуты, если перед очисткой был активен Завтрак чемпиона.
-11. Заначка шахтёра
-	Иконка: ⛏ (серая) | Флаг: -c (Подряд)
-	Порог: 7 (любые предметы)
-	Эффект: Ночное зрение на 5 минут.
-12. Священная еда 
-	Иконка: ✨ (золотая) | Флаг: -o (В истории)
-	Порог: 1 (золотой предмет)
-	Эффект: Детокс. Снимает почти все эффекты других групп (кроме Фрукторианства и Жидкостей).
-	Зависимость: Дает Регенерацию на 3 минуты только если активно Тело — храм.
-13. Морской мир 
-	Иконка: 🐟 (синяя) | Флаг: -o (В истории)
-	Порог: 5 (любые предметы)
-	Эффект: Подводное дыхание V на 10 минут.
-	Конфликты: Вызывает тошноту при "запивании" молоком (Молочная чистка).
-14. Сладкоежка 
-	Иконка: 🍭 (светло-пурпурная) | Флаг: -c (Подряд)
-	Порог: 10 (Уникальные предметы)
-	Эффект: Снижает уровень сахара (Sugars) в моде Diet на 0.5 (лечебный эффект против передозировки сахаром).
-15. Осязаемый жар
-	Иконка: 🔥 (красная) | Флаг: -o (В истории)
-	Порог: 7 (любые предметы)
-	Эффект: Огнестойкость на 15 минут.
-	Конфликты: Отменяет эффект Холодной пустоты. Снимается Священной едой.
-16. Тело — храм
-	Иконка: ⛪ (белая) | Флаг: -c (Подряд)
-	Порог: 10 (Уникальные предметы)
-	Эффект: Групповой множитель "Грязной еды". Накладывает черно-белый фильтр (grayscale).
-	Зависимость: Активирует "скрытые" негативные эффекты у Фастфуда и Алкоголя.
-17. Недооцененные 
-	Иконка: ⭐ (желтая) | Флаг: -o (В истории)
-	Порог: 7 (любые предметы)
-	Эффект: Дает бонус +0.25 ко всем категориям мода Diet (делает питание более сбалансированным).
+## Default behavior
 
-### Руководство по созданию датапаков для LDieDiet
-Датапаки позволяют настраивать группы еды, награды за их активацию и исключения из системы надоедания.
+Repeated consumption builds habituation based on original nutritional value and CCI, the food's complexity. Other food reduces recorded accumulation. By default, recovery requires an actual gain of at least one whole hunger point after penalties/capacity limits. Creative-mode testing at full hunger therefore does not demonstrate recovery. Pack authors can change eligibility.
 
-1. Группы еды (Food Groups)
-Файлы конфигурации групп находятся по пути: `data/<namespace>/food_groups/<group_id>.json`.
+Nutrition scales decay on hunger loss by default. Death removes **50% of each current nutrition value**; that setting does not reset habituation, lifetime consumption counts, or discoveries. These settings are configurable.
 
-### Основные параметры группы:
-| Поле | Тип | Описание |
-| :--- | :--- | :--- |
-| `name` | String | Название группы (отображается в интерфейсе). |
-| `active_effect_text` | String | Подзаголовок, который видно в GUI при активной группе. |
-| `flag` | String | Режим подсчета: `-o` (общий — учитывает всё из истории) или `-c` (подряд — серия поеданий). |
-| `threshold` | Integer | Сколько еды нужно съесть для активации группы. |
-| `require_unique` | Boolean | `true` — учитывать только разные предметы, `false` — суммировать всё. |
-| `hide_activation_message` | Boolean | `true` — скрыть оранжевый текст активации над хотбаром. |
-| `advancement` | String | Путь к достижению, которое выдается при активации (напр. `mod:folder/adv`). |
-| `tooltip_icon` | String | Символ иконки в тултипе (напр. `✨`). |
-| `tooltip_icon_color` | String | Цвет иконки (напр. `gold`, `red`, `aqua`). |
-| `items` | Array | Список предметов (`minecraft:apple`) или тегов (`#forge:fruits`). |
+Automatic recipe-derived CCI is disabled by default. Ready-made packs contain saved values. Authors can supply their own or enable calculation; `/ldiediet calc_all_cci` explicitly recalculates automatic values with operator permissions.
 
-2. Эффекты (Effects)
-Внутри массива `effects` можно задавать различные бонусы или штрафы.
-Общие поля эффекта:
-- `duration_type` (или `type`):
-  - `"fixed"` — эффект на фиксированное время.
-  - `"until_death"` — вечный эффект до смерти.
-  - `"until_death_intermittent"` — вечный, но работает интервалами (мерцает).
-  - `"history_intermittent"` — работает, пока в истории игрока есть еда этой группы.
-- `effect_type`:
-  - `"mob_effect"` — стандартный эффект зелья.
-  - `"health"` — бонус к максимальному здоровью.
-  - `"diet"` — добавочные статы для мода Diet.
-  - `"overlay"` — визуальный эффект на весь экран.
-- `effect_id`: ID эффекта (напр. `minecraft:regeneration`) или название группы Diet.
-- `value`: Значение для ХП, статов Diet или путь к текстуре оверлея.
-- `amplifier`: Уровень эффекта (0 = I уровень).
-- `duration_ticks`: Длительность в тиках.
-Продвинутые настройки эффектов:
-- `requires_active_groups`: Список ID групп, которые **уже** должны быть активны, чтобы этот эффект сработал.
-- `cancel_on_groups`: Список ID групп, чья активация **отменит** данный эффект.
-- `interval_active_ticks`: `[min, max]` — время работы в интервальном режиме.
-- `interval_pause_ticks`: `[min, max]` — время паузы в интервальном режиме.
-- `duration_multipliers`: Объект `{"other_group_id": 1.5}`, увеличивающий силу эффекта, если активна другая группа.
+## Compatibility and customization
 
-3. Исключения (Exclusions)
-Файлы исключений находятся по пути: `data/<namespace>/exclusions/<file_id>.json`.
+Diet is optional. With the supported version installed, L’DieDiet imports its supported data and disables its gameplay handlers to avoid duplicate systems. The tested version is Diet Forge 2.1.1 for Minecraft 1.20.1; unsupported Diet versions stop loading with an incompatibility message.
 
-В них можно принудительно задать стадию надоедания для конкретных предметов (например, чтобы еда всегда считалась "надоевшей" или наоборот "свежей").
+The [Author Guide](README_MODPACK_AUTHORS.md) covers every scale/group field, configuration, formulas, NBT variants, rewards, and translations. The [API Reference](docs/INTEGRATION_API.md) covers server state, cancelable Forge events, KubeJS access, world predicates, external feeding, and custom recipe adapters.
 
-```json
-{
-  "overrides": {
-    "minecraft:rotten_flesh": 4, 
-    "minecraft:golden_apple": 0
-  }
-}
+For a bug report, include Forge/mod versions, `latest.log`, relevant datapack/configuration, and reproduction steps. [Report a bug](https://github.com/lbdumbra-jpg/l-diediet/issues/new/choose).
+
+## Building from source
+
+With Java 17:
+
+```text
+./gradlew build
+./gradlew test
+./gradlew runGameTestServer
 ```
 
-Также предметы можно исключить полностью через тег предметов: `data/ldiediet/tags/items/excluded_foods.json`.
+On Windows, use `gradlew.bat`. The build output is `build/libs/l'diediet_2.0.0.jar`. Test classes and fixtures are excluded from the release JAR. See [Developer Setup](docs/DEVELOPMENT.md) for project layout and contributions.
 
-## Достижения
-При добавлениии своих собственных достижений вы можете привязать выдачу достижения к группе. Для этого создайте достижение по этому шаблону
+## License
 
-```json
-{
-    "parent": "........",
-    "display": {
-        "icon": {
-            "item": "..........."
-        },
-        "title": "..........",
-        "description": "............",
-        "frame": "task",
-        "show_toast": true,
-        "announce_to_chat": true,
-        "hidden": false
-    },
-    "criteria": {
-        "award": {
-            "trigger": "minecraft:impossible"
-        }
-    }
-}
-```
+The mod code and datapacks prepared in this project are distributed under [MIT](LICENSE). Separate datapacks have their own copy of the license.

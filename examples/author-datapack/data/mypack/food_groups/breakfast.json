@@ -1,0 +1,26 @@
+{
+  "name": "Breakfast",
+  "name_key": "mypack.group.breakfast",
+  "active_effect_text": "Well fed",
+  "active_effect_text_key": "mypack.group.breakfast.active",
+  "icon": "minecraft:bread",
+  "order": 10,
+  "items": [
+    "minecraft:bread",
+    "minecraft:apple",
+    "minecraft:carrot"
+  ],
+  "threshold": 3,
+  "require_unique": true,
+  "flag": "-c",
+  "effects": [
+    {
+      "duration_type": "fixed",
+      "duration_ticks": 1200,
+      "effect_type": "attribute",
+      "effect_id": "minecraft:generic.movement_speed",
+      "operation": "multiply_base",
+      "value": 0.1
+    }
+  ]
+}

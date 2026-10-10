@@ -1,0 +1,56 @@
+{
+  "priority": 100,
+  "items": [
+    "#minecraft:fox_food"
+  ],
+  "stages": {
+    "thresholds": [
+      6,
+      12,
+      18,
+      24
+    ],
+    "hunger_multipliers": [
+      1,
+      0.8,
+      0.6,
+      0.4,
+      0.2
+    ],
+    "saturation_multipliers": [
+      1,
+      0.7,
+      0.5,
+      0.3,
+      0.1
+    ],
+    "chewing_multipliers": [
+      1,
+      1.2,
+      1.5,
+      2,
+      2.5
+    ],
+    "nutrient_multipliers": [
+      1,
+      1,
+      0.8,
+      0.5,
+      0
+    ],
+    "allow_food_buffs": [
+      true,
+      true,
+      false,
+      false,
+      false
+    ],
+    "minimum_hunger_restored": 0,
+    "allowed_food_effects": [
+      "minecraft:night_vision"
+    ],
+    "blocked_food_effects": [
+      "minecraft:poison"
+    ]
+  }
+}

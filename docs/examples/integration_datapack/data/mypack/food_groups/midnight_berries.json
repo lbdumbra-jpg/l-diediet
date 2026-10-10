@@ -1,0 +1,31 @@
+{
+  "name": "Ягодная ночь",
+  "name_key": "mypack.group.midnight_berries",
+  "items": [
+    "#minecraft:fox_food"
+  ],
+  "flag": "-o",
+  "threshold": 3,
+  "require_unique": false,
+  "secret": true,
+  "icon": "minecraft:sweet_berries",
+  "effects": [
+    {
+      "effect_type": "health",
+      "effect_id": "health",
+      "duration_type": "until_death",
+      "value": 2,
+      "continuous_conditions": true,
+      "conditions": {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "time": {
+          "min": 13000,
+          "max": 23000
+        },
+        "weather": "clear"
+      }
+    }
+  ]
+}

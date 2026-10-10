@@ -1,0 +1,30 @@
+{
+  "name": "Balanced diet",
+  "name_key": "mypack.rule.balanced",
+  "logic": "AND",
+  "conditions": [
+    {
+      "nutrients": [
+        "proteins",
+        "vegetables"
+      ],
+      "match": "all",
+      "min": 60,
+      "max": 100,
+      "percent": true
+    }
+  ],
+  "attributes": [
+    {
+      "attribute": "minecraft:generic.movement_speed",
+      "amount": 0.1,
+      "operation": "multiply_base"
+    }
+  ],
+  "effects": [
+    {
+      "effect": "minecraft:strength",
+      "amplifier": 0
+    }
+  ]
+}
