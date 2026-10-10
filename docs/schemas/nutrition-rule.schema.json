@@ -1,0 +1,254 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "L'DieDiet 2.1 nutrition-rule",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "name_key": {
+      "type": "string"
+    },
+    "logic": {
+      "enum": [
+        "AND",
+        "OR"
+      ]
+    },
+    "conditions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "$schema": {
+            "type": "string"
+          },
+          "nutrients": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          },
+          "match": {
+            "enum": [
+              "all",
+              "any",
+              "none",
+              "average",
+              "every"
+            ]
+          },
+          "min": {
+            "type": "number"
+          },
+          "max": {
+            "type": "number"
+          },
+          "percent": {
+            "type": "boolean"
+          },
+          "min_inclusive": {
+            "type": "boolean"
+          },
+          "max_inclusive": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "nutrients"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1
+    },
+    "attributes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "$schema": {
+            "type": "string"
+          },
+          "attribute": {
+            "type": "string",
+            "pattern": "^[a-z0-9_.-]+:[a-z0-9_./-]+$"
+          },
+          "amount": {
+            "type": "number"
+          },
+          "operation": {
+            "enum": [
+              "addition",
+              "add",
+              "multiply_base",
+              "multiply_total",
+              "multiply_base_value",
+              "multiply_total_value"
+            ]
+          }
+        },
+        "required": [
+          "attribute",
+          "amount"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "effects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "$schema": {
+            "type": "string"
+          },
+          "effect": {
+            "type": "string",
+            "pattern": "^[a-z0-9_.-]+:[a-z0-9_./-]+$"
+          },
+          "amplifier": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 255
+          }
+        },
+        "required": [
+          "effect"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "advancement": {
+      "type": "string",
+      "pattern": "^[a-z0-9_.-]+:[a-z0-9_./-]+$"
+    },
+    "world_conditions": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "LDieDiet world conditions",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "$schema": {
+          "type": "string"
+        },
+        "logic": {
+          "enum": [
+            "AND",
+            "OR"
+          ],
+          "default": "AND"
+        },
+        "biomes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "description": "Biome IDs or #biome tags; any listed biome matches."
+        },
+        "dimensions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        },
+        "advancements": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "description": "All listed advancements must be earned."
+        },
+        "weather": {
+          "enum": [
+            "clear",
+            "rain",
+            "thunder"
+          ]
+        },
+        "cold_sweat_state": {
+          "enum": [
+            "freezing",
+            "cold",
+            "normal",
+            "hot",
+            "overheating"
+          ]
+        },
+        "season": {
+          "enum": [
+            "spring",
+            "summer",
+            "autumn",
+            "winter"
+          ]
+        },
+        "temperature": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "$schema": {
+              "type": "string"
+            },
+            "min": {
+              "type": "number"
+            },
+            "max": {
+              "type": "number"
+            }
+          }
+        },
+        "time": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "min": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 23999
+            },
+            "max": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 23999
+            }
+          },
+          "description": "Inclusive game-day ticks. min>max wraps across midnight."
+        },
+        "custom": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "args": {
+                "type": "object"
+              },
+              "description_key": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "conditions"
+  ],
+  "additionalProperties": false
+}

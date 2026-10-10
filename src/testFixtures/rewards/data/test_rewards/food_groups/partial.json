@@ -1,0 +1,26 @@
+{
+  "name": "partial",
+  "hide_activation_message": true,
+  "items": [
+    "minecraft:air"
+  ],
+  "threshold": 0,
+  "require_unique": false,
+  "effects": [
+    {
+      "type": "until_death",
+      "effect_type": "health",
+      "effect_id": "health",
+      "value": 1,
+      "cancel_on_groups": [
+        "dependent"
+      ]
+    },
+    {
+      "type": "until_death",
+      "effect_type": "attribute",
+      "effect_id": "minecraft:generic.attack_damage",
+      "value": 2
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+{"name":"Percent reward","name_key":"test.percent","active_effect_text":"Active","active_effect_text_key":"test.percent.active","icon":"minecraft:apple","order":7,"items":["minecraft:structure_void"],"threshold":1,"effects":[{"duration_type":"until_death","effect_type":"attribute","effect_id":"minecraft:generic.movement_speed","value":0.25,"operation":"multiply_base"}]}

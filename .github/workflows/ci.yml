@@ -1,0 +1,49 @@
+name: Build and test
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    name: Java 17 / Diet ${{ matrix.diet }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        diet: [absent, present]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/setup-java@de7274f081f381c8f8158605e0321c36c376e2e6
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: gradle
+      - name: Verify mod and game logic
+        shell: bash
+        run: |
+          args=()
+          if [ "${{ matrix.diet }}" = "present" ]; then args+=(-PwithDiet); fi
+          ./gradlew --no-daemon build runGameTestServer -PgameTestDir=run-ci "${args[@]}"
+      - name: Verify release contents
+        shell: python
+        run: |
+          import zipfile
+          from pathlib import Path
+          jar = Path("build/libs/l'diediet_2.0.0.jar")
+          with zipfile.ZipFile(jar) as archive:
+              assert not any(p.startswith('data/') or '/gametest/' in p for p in archive.namelist())
+              assert 'license="MIT"' in archive.read('META-INF/mods.toml').decode()
+              assert 'MIT License' in archive.read('LICENSE').decode()
+      - name: Upload build and test reports
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: mod-${{ matrix.diet }}
+          path: |
+            build/libs/l'diediet_2.0.0.jar
+            build/reports/tests/test/
+            run-ci/logs/latest.log

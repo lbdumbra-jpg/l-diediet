@@ -1,0 +1,19 @@
+{
+  "name": "window",
+  "hide_activation_message": true,
+  "items": [
+    "minecraft:apple",
+    "minecraft:bread"
+  ],
+  "threshold": 2,
+  "require_unique": true,
+  "effects": [
+    {
+      "type": "fixed",
+      "effect_type": "health",
+      "effect_id": "health",
+      "value": 1,
+      "duration_ticks": 1
+    }
+  ]
+}

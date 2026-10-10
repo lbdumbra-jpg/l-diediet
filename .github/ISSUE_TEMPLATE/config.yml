@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Datapack source and downloads
+    url: https://github.com/lbdumbra-jpg/l-diediet-datapacks
+    about: Report food assignments and pack data in the datapack repository.

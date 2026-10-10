@@ -1,0 +1,20 @@
+{
+  "name": "source",
+  "hide_activation_message": true,
+  "items": [
+    "minecraft:air"
+  ],
+  "threshold": 0,
+  "require_unique": false,
+  "effects": [
+    {
+      "type": "until_death",
+      "effect_type": "health",
+      "effect_id": "health",
+      "value": 2,
+      "cancel_on_groups": [
+        "dependent"
+      ]
+    }
+  ]
+}

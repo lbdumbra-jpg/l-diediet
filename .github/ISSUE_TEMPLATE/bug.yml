@@ -1,0 +1,52 @@
+name: Bug report
+description: Report a reproducible problem.
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: input
+    id: version
+    attributes:
+      label: L'DieDiet version
+      placeholder: "2.0.0"
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Minecraft, Forge and modpack
+      placeholder: "Minecraft 1.20.1, Forge 47.x, modpack name/version"
+    validations:
+      required: true
+  - type: dropdown
+    id: pack
+    attributes:
+      label: Installed datapack
+      options:
+        - All of Food
+        - All of Food Vanilla
+        - LDieDiet Original
+        - Custom datapack
+        - No datapack
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Include item IDs, game mode and hunger level when relevant.
+      placeholder: "1. ...
+2. ...
+3. ..."
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: Expected and actual behaviour
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Screenshots, logs and relevant configuration
+      description: Attach only relevant files and remove tokens or personal information.

@@ -1,0 +1,33 @@
+{
+  "name": "waiting",
+  "hide_activation_message": true,
+  "items": [
+    "minecraft:air"
+  ],
+  "threshold": 0,
+  "require_unique": false,
+  "effects": [
+    {
+      "type": "until_death",
+      "effect_type": "health",
+      "effect_id": "health",
+      "value": 5,
+      "requires_active_groups": [
+        "gate"
+      ],
+      "cancel_on_groups": [
+        "stop"
+      ]
+    },
+    {
+      "type": "fixed",
+      "effect_type": "health",
+      "effect_id": "health",
+      "value": 2,
+      "duration_ticks": 3,
+      "requires_active_groups": [
+        "gate"
+      ]
+    }
+  ]
+}

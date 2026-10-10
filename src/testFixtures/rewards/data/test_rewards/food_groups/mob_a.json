@@ -1,0 +1,17 @@
+{
+  "name": "mob_a",
+  "hide_activation_message": true,
+  "items": [
+    "minecraft:air"
+  ],
+  "threshold": 0,
+  "require_unique": false,
+  "effects": [
+    {
+      "type": "until_death",
+      "effect_type": "mob_effect",
+      "effect_id": "minecraft:speed",
+      "amplifier": 3
+    }
+  ]
+}

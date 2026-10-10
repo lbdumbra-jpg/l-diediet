@@ -1,0 +1,139 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "LDieDiet formulas",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "cci_formula": {
+      "type": [
+        "string",
+        "number"
+      ],
+      "minLength": 1,
+      "description": "Expression checked by /ldiediet validate; see MODPACK_AUTHOR_RU.md for its available variables.",
+      "default": "average_ingredients_cci + 0.4 * sqrt(max(0, ingredients_count - 1)) + stages_weight"
+    },
+    "monotony_increase": {
+      "type": [
+        "string",
+        "number"
+      ],
+      "minLength": 1,
+      "description": "Expression checked by /ldiediet validate; see MODPACK_AUTHOR_RU.md for its available variables."
+    },
+    "catalyst_formula": {
+      "type": [
+        "string",
+        "number"
+      ],
+      "minLength": 1,
+      "description": "Expression checked by /ldiediet validate; see MODPACK_AUTHOR_RU.md for its available variables."
+    },
+    "debuff_factor": {
+      "type": [
+        "string",
+        "number"
+      ],
+      "minLength": 1,
+      "description": "Expression checked by /ldiediet validate; see MODPACK_AUTHOR_RU.md for its available variables."
+    },
+    "recovery_formula": {
+      "type": [
+        "string",
+        "number"
+      ],
+      "minLength": 1,
+      "description": "Expression checked by /ldiediet validate; see MODPACK_AUTHOR_RU.md for its available variables."
+    },
+    "nutrient_add": {
+      "type": [
+        "string",
+        "number"
+      ],
+      "minLength": 1,
+      "description": "Expression checked by /ldiediet validate; see MODPACK_AUTHOR_RU.md for its available variables.",
+      "default": "base_n * stage_multiplier"
+    },
+    "recovery_mode": {
+      "type": "string",
+      "enum": [
+        "active"
+      ],
+      "default": "active"
+    },
+    "cci_min": {
+      "type": "number",
+      "exclusiveMinimum": 0,
+      "default": 1
+    },
+    "cci_max": {
+      "type": "number",
+      "exclusiveMinimum": 0,
+      "default": 4
+    },
+    "base_scale": {
+      "type": "number",
+      "exclusiveMinimum": 0,
+      "default": 10
+    },
+    "k_norm": {
+      "type": "number",
+      "exclusiveMinimum": 0,
+      "default": 10
+    },
+    "monotony_cap": {
+      "type": "number",
+      "exclusiveMinimum": 0,
+      "default": 24,
+      "maximum": 3.4028234663852886e+38
+    },
+    "offset_cat": {
+      "type": "number",
+      "default": 1
+    },
+    "d_cci": {
+      "type": "number",
+      "default": 1.5
+    },
+    "d_monotony": {
+      "type": "number",
+      "default": 0.02
+    },
+    "base_recovery": {
+      "type": "number",
+      "default": 1
+    },
+    "base_increase": {
+      "type": "number",
+      "default": 1
+    },
+    "recovery_acceleration": {
+      "type": "number",
+      "default": 0.08,
+      "minimum": 0
+    },
+    "recovery_delay": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 2147483647,
+      "default": 20
+    },
+    "recovery_min_hunger_restored": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 2147483647,
+      "default": 1,
+      "description": "Actual hunger points restored, after penalties and the hunger cap. Ignored when recovery_requires_hunger=false."
+    },
+    "recovery_requires_hunger": {
+      "type": "boolean",
+      "default": true,
+      "description": "Require a real hunger gain; false also counts consumption at full hunger. Positive food quality is still required."
+    },
+    "recovery_reset_on_eat": {
+      "type": "boolean",
+      "default": true,
+      "description": "Reset this food's other-portion counter when it is eaten. Full recovery always clears the counter."
+    }
+  }
+}

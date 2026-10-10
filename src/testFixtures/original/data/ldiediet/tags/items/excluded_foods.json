@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    { "id": "grapesadventures:portal_fluid_bottle", "required": false },
+    { "id": "create:red_sand_paper", "required": false },
+    { "id": "create:sand_paper", "required": false }
+  ]
+}

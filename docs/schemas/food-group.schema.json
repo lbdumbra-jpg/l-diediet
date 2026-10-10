@@ -1,0 +1,297 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "L'DieDiet 2.1 food-group",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "name_key": {
+      "type": "string"
+    },
+    "active_effect_text": {
+      "type": "string"
+    },
+    "active_effect_text_key": {
+      "type": "string"
+    },
+    "icon": {
+      "type": "string",
+      "pattern": "^[a-z0-9_.-]+:[a-z0-9_./-]+$"
+    },
+    "order": {
+      "type": "integer"
+    },
+    "advancement": {
+      "type": "string",
+      "pattern": "^[a-z0-9_.-]+:[a-z0-9_./-]+$"
+    },
+    "flag": {
+      "enum": [
+        "-o",
+        "-c"
+      ]
+    },
+    "threshold": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 100
+    },
+    "require_unique": {
+      "type": "boolean"
+    },
+    "hide_activation_message": {
+      "type": "boolean"
+    },
+    "tooltip_icon": {
+      "type": "string"
+    },
+    "tooltip_icon_color": {
+      "type": "string"
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^#?[a-z0-9_.-]+:[a-z0-9_./-]+$"
+      },
+      "minItems": 1
+    },
+    "effects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "$schema": {
+            "type": "string"
+          },
+          "duration_type": {
+            "enum": [
+              "fixed",
+              "until_death",
+              "until_death_intermittent",
+              "history_intermittent"
+            ]
+          },
+          "type": {
+            "type": "string"
+          },
+          "effect_type": {
+            "enum": [
+              "mob_effect",
+              "attribute",
+              "health",
+              "nutrient_multiplier",
+              "overlay",
+              "diet"
+            ]
+          },
+          "effect_id": {
+            "type": "string"
+          },
+          "value": {
+            "type": [
+              "number",
+              "string"
+            ]
+          },
+          "operation": {
+            "enum": [
+              "addition",
+              "add",
+              "multiply_base",
+              "multiply_total",
+              "multiply_base_value",
+              "multiply_total_value"
+            ]
+          },
+          "amplifier": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "duration_ticks": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "interval_active_ticks": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "minItems": 1,
+            "maxItems": 2
+          },
+          "interval_pause_ticks": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "minItems": 1,
+            "maxItems": 2
+          },
+          "requires_active_groups": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "cancel_on_groups": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "duration_multipliers": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            }
+          },
+          "conditions": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "title": "LDieDiet world conditions",
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "$schema": {
+                "type": "string"
+              },
+              "logic": {
+                "enum": [
+                  "AND",
+                  "OR"
+                ],
+                "default": "AND"
+              },
+              "biomes": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "minItems": 1,
+                "description": "Biome IDs or #biome tags; any listed biome matches."
+              },
+              "dimensions": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "minItems": 1
+              },
+              "advancements": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "minItems": 1,
+                "description": "All listed advancements must be earned."
+              },
+              "weather": {
+                "enum": [
+                  "clear",
+                  "rain",
+                  "thunder"
+                ]
+              },
+              "cold_sweat_state": {
+                "enum": [
+                  "freezing",
+                  "cold",
+                  "normal",
+                  "hot",
+                  "overheating"
+                ]
+              },
+              "season": {
+                "enum": [
+                  "spring",
+                  "summer",
+                  "autumn",
+                  "winter"
+                ]
+              },
+              "temperature": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "$schema": {
+                    "type": "string"
+                  },
+                  "min": {
+                    "type": "number"
+                  },
+                  "max": {
+                    "type": "number"
+                  }
+                }
+              },
+              "time": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "min": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 23999
+                  },
+                  "max": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 23999
+                  }
+                },
+                "description": "Inclusive game-day ticks. min>max wraps across midnight."
+              },
+              "custom": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "id"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "args": {
+                      "type": "object"
+                    },
+                    "description_key": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "continuous_conditions": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "effect_id"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "secret": {
+      "type": "boolean",
+      "default": false,
+      "description": "Hide the name, icon, progress and item membership until a group effect first becomes active. Discovery persists after death and relog."
+    }
+  },
+  "required": [
+    "items",
+    "threshold",
+    "effects"
+  ],
+  "additionalProperties": false
+}

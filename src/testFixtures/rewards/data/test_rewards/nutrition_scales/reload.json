@@ -1,0 +1,1 @@
+{"name":"Reload fixture","max_value":100,"thresholds":[{"min":50,"max":100,"modifiers":[{"attribute":"minecraft:generic.max_health","amount":3,"operation":"addition"}]}]}

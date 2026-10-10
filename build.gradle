@@ -27,7 +27,17 @@ minecraft {
 
     runs {
         client {
-            workingDirectory project.file('run')
+            workingDirectory project.file(project.findProperty('clientTestDir') ?: 'run')
+            if (project.hasProperty('journalAcceptance')) {
+                property 'ldiediet.journalAcceptance', 'true'
+                args '--quickPlaySingleplayer', 'ldiediet-acceptance'
+            }
+            if (project.hasProperty('authorAcceptance')) property 'ldiediet.authorAcceptance', 'true'
+            if (project.hasProperty('clientAcceptance')) {
+                property 'ldiediet.clientAcceptance', 'true'
+                if (project.hasProperty('checkRejoin')) property 'ldiediet.checkRejoin', 'true'
+                args '--quickPlaySingleplayer', 'ldiediet-acceptance'
+            }
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
             mods {
@@ -38,9 +48,29 @@ minecraft {
         }
 
         server {
-            workingDirectory project.file('run')
+            workingDirectory project.file(project.findProperty('serverTestDir') ?: 'run')
+            if (project.hasProperty('releaseCatalog')) property 'ldiediet.releaseCatalog', project.property('releaseCatalog')
+            if (project.hasProperty('catalogCalculateCci')) property 'ldiediet.catalogCalculateCci', 'true'
+            if (project.hasProperty('releasePackChecks')) property 'ldiediet.releasePackChecks', project.property('releasePackChecks')
+            if (project.hasProperty('testPackAcceptance')) property 'ldiediet.testPackAcceptance', 'true'
+            if (project.hasProperty('authorAcceptance')) property 'ldiediet.authorAcceptance', 'true'
+            if (project.hasProperty('serverAcceptance')) property 'ldiediet.serverAcceptance', 'true'
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
+            mods {
+                "${mod_id}" {
+                    source sourceSets.main
+                }
+            }
+        }
+
+        gameTestServer {
+            if (project.hasProperty('authorStress')) property 'ldiediet.authorStress', 'true'
+            workingDirectory project.file(project.findProperty('gameTestDir') ?: 'run-gametest')
+            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.console.level', 'info'
+            property 'forge.enabledGameTestNamespaces', 'minecraft'
+            property 'ldiediet.enableConsumptionFixtures', 'true'
             mods {
                 "${mod_id}" {
                     source sourceSets.main
@@ -53,23 +83,36 @@ minecraft {
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
-    maven {
-        name = "Illusive Soulworks"
-        url = "https://maven.theillusivec4.top/"
-    }
-    maven {
-        name = "CurseMaven"
-        url = "https://cursemaven.com"
-    }
     mavenCentral()
+    if (project.hasProperty('filmRuntime')) maven { url = uri('build/film-test-repo') }
+    if (project.hasProperty('withAuthorJs') || project.hasProperty('withAuthorCold')) maven { url = uri('build/author-test-repo') }
+    if (project.hasProperty('withGea')) maven { url = uri('build/optional-test-repo') }
+    maven { url = 'https://cursemaven.com'; content { includeGroup 'curse.maven' } }
 }
 
 dependencies {
+    if (project.hasProperty('filmRuntime')) {
+        runtimeOnly fg.deobf('local.film:oculus:fixture')
+        runtimeOnly fg.deobf('local.film:embeddium:fixture')
+        runtimeOnly fg.deobf('local.film:farmersdelight:fixture')
+        runtimeOnly fg.deobf('local.film:replay:fixture')
+    }
+    if (project.hasProperty('withAuthorCold')) runtimeOnly fg.deobf('local.author:coldsweat:fixture')
+    if (project.hasProperty('withAuthorJs')) {
+        runtimeOnly fg.deobf('local.author:kubejs:fixture')
+        runtimeOnly fg.deobf('local.author:rhino:fixture')
+        runtimeOnly fg.deobf('local.author:architectury:fixture')
+    }
+    if (project.hasProperty('withGea')) runtimeOnly fg.deobf('local.thirdparty:gea:2.3.1')
     minecraft "net.minecraftforge:forge:${spec_version_minecraft}-${spec_version_forge}"
-    
-    // Diet Mod - REQUIRED dependency (using CurseMaven)
-    // File: diet-forge-2.1.1+1.20.1.jar, Project ID: 443570, File ID: 4813904
-    implementation fg.deobf("curse.maven:diet-443570:4813904")
+     
+    if (project.hasProperty('withDiet')) {
+        runtimeOnly fg.deobf('curse.maven:diet-443570:4813904')
+    }
+
+    testImplementation platform('org.junit:junit-bom:5.11.4')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
     annotationProcessor "org.spongepowered:mixin:0.8.5:processor"
 }
@@ -77,9 +120,13 @@ dependencies {
 mixin {
     add sourceSets.main, "${mod_id}.refmap.json"
     config "${mod_id}.mixins.json"
+    config "${mod_id}.diet-compat.mixins.json"
 }
 
 jar {
+    archiveFileName = "l'diediet_2.0.0.jar"
+    from('LICENSE')
+    exclude 'com/lumbra/ldiediet/gametest/**'
     manifest {
         attributes([
                 "Specification-Title": "${mod_name}",
@@ -89,11 +136,51 @@ jar {
                 "Implementation-Version": "${mod_version}",
                 "Implementation-Vendor" : "${mod_authors}",
                 "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
-                "MixinConfigs": "${mod_id}.mixins.json"
+                "MixinConfigs": "${mod_id}.mixins.json,${mod_id}.diet-compat.mixins.json"
         ])
     }
 }
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
+}
+
+tasks.register('catalogJar', Jar) {
+    dependsOn classes
+    from sourceSets.main.output
+    archiveFileName = 'ldiediet-catalog-checks.jar'
+    manifest.from jar.manifest
+}
+reobf { catalogJar {} }
+
+test {
+    useJUnitPlatform()
+}
+
+sourceSets.test.resources.srcDir 'src/testFixtures/original'
+
+def rewardFixtureTask = tasks.register('prepareRewardFixtures', Copy) {
+    from 'src/testFixtures/rewards'
+    into project.file((project.findProperty('gameTestDir') ?: 'run-gametest') + '/world/datapacks/ldiediet-test-fixtures')
+}
+def originalFixtureTask = tasks.register('prepareOriginalFixtures', Copy) {
+    from 'src/testFixtures/original'
+    into project.file((project.findProperty('gameTestDir') ?: 'run-gametest') + '/world/datapacks/ldiediet-original-fixtures')
+}
+tasks.matching { it.name == 'runGameTestServer' }.configureEach { dependsOn rewardFixtureTask, originalFixtureTask }
+
+if (project.hasProperty('withAuthorJs')) {
+    def scriptFixtures = tasks.register('prepareAuthorScriptFixtures', Copy) {
+        from 'src/testFixtures/authorJs'
+        into project.file((project.findProperty('gameTestDir') ?: 'run-gametest') + '/kubejs')
+    }
+    tasks.matching { it.name == 'runGameTestServer' }.configureEach { dependsOn scriptFixtures }
+}
+
+if (project.hasProperty('clientAcceptance')) {
+    def clientFixtureTask = tasks.register('prepareClientAuthorFixtures', Copy) {
+        from 'src/testFixtures/clientAuthor'
+        into project.file((project.findProperty('clientTestDir') ?: 'run') + '/saves/ldiediet-acceptance/datapacks/ldiediet-client-fixtures')
+    }
+    tasks.matching { it.name == 'runClient' }.configureEach { dependsOn clientFixtureTask }
 }

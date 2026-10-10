@@ -1,0 +1,10 @@
+{
+  "name": "Proteins",
+  "max_value": 100,
+  "decay_percent_per_minute": 0,
+  "thresholds": [{
+    "min": 60,
+    "max": 100,
+    "modifiers": [{"attribute": "minecraft:generic.max_health", "amount": 2, "operation": "addition"}]
+  }]
+}

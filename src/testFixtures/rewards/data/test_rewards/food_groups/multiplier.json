@@ -1,0 +1,17 @@
+{
+  "name": "multiplier",
+  "hide_activation_message": true,
+  "items": [
+    "minecraft:air"
+  ],
+  "threshold": 0,
+  "require_unique": false,
+  "effects": [
+    {
+      "type": "until_death",
+      "effect_type": "nutrient_multiplier",
+      "effect_id": "*",
+      "value": 0
+    }
+  ]
+}

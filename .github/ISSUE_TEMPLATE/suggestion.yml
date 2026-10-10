@@ -1,0 +1,17 @@
+name: Feature or balance suggestion
+description: Describe the gameplay or authoring problem you want to solve.
+title: "[Suggestion]: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or use case
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behaviour
+    validations:
+      required: true

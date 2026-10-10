@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.lumbra.ldiediet.mixin.compat",
+  "plugin": "com.lumbra.ldiediet.compat.DietMixinPlugin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "DietTrackerMixin", "DietRegenerationMixin", "DietGameplayEventsMixin", "DietModEventsMixin"
+  ],
+  "client": ["DietClientEventsMixin", "DietKeysMixin"],
+  "injectors": { "defaultRequire": 1 }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "paused",
+  "hide_activation_message": true,
+  "items": [
+    "minecraft:air"
+  ],
+  "threshold": 0,
+  "require_unique": false,
+  "effects": [
+    {
+      "type": "until_death_intermittent",
+      "effect_type": "health",
+      "effect_id": "health",
+      "value": 1,
+      "interval_active_ticks": [
+        1,
+        1
+      ],
+      "interval_pause_ticks": [
+        10,
+        10
+      ]
+    }
+  ]
+}

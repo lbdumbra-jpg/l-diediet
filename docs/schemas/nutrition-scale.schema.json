@@ -1,0 +1,100 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "L'DieDiet 2.1 nutrition-scale",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "name_key": {
+      "type": "string"
+    },
+    "max_value": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "decay_percent_per_minute": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "order": {
+      "type": "integer"
+    },
+    "color": {
+      "type": "string",
+      "pattern": "^#?[0-9a-fA-F]{6}$"
+    },
+    "icon": {
+      "type": "string",
+      "pattern": "^[a-z0-9_.-]+:[a-z0-9_./-]+$"
+    },
+    "thresholds": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "$schema": {
+            "type": "string"
+          },
+          "min": {
+            "type": "number"
+          },
+          "max": {
+            "type": "number"
+          },
+          "min_inclusive": {
+            "type": "boolean"
+          },
+          "max_inclusive": {
+            "type": "boolean"
+          },
+          "modifiers": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "$schema": {
+                  "type": "string"
+                },
+                "attribute": {
+                  "type": "string",
+                  "pattern": "^[a-z0-9_.-]+:[a-z0-9_./-]+$"
+                },
+                "amount": {
+                  "type": "number"
+                },
+                "operation": {
+                  "enum": [
+                    "addition",
+                    "add",
+                    "multiply_base",
+                    "multiply_total",
+                    "multiply_base_value",
+                    "multiply_total_value"
+                  ]
+                }
+              },
+              "required": [
+                "attribute",
+                "amount"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      }
+    },
+    "decay_multiplier": {
+      "type": "number",
+      "minimum": 0
+    }
+  },
+  "required": [],
+  "additionalProperties": false
+}

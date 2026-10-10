@@ -1,0 +1,1 @@
+{"name":"Balanced","name_key":"test.balanced","conditions":[{"nutrients":["test_rewards:author_energy","vegetables"],"min":60,"max":100,"match":"all"}],"attributes":[{"attribute":"minecraft:generic.movement_speed","amount":0.1,"operation":"multiply_base"}],"effects":[{"effect":"minecraft:strength","amplifier":0}]}

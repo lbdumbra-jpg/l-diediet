@@ -1,0 +1,43 @@
+{
+  "priority": 1000,
+  "items": [
+    "minecraft:apple",
+    "#minecraft:fox_food"
+  ],
+  "nbt": "{LddApiFixture:1b}",
+  "stages": {
+    "thresholds": [
+      2,
+      4,
+      6,
+      8
+    ],
+    "hunger_multipliers": [
+      1,
+      0.5,
+      0.25,
+      0.25,
+      0.25
+    ],
+    "chewing_multipliers": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "nutrient_multipliers": [
+      1,
+      0.75,
+      0.75,
+      0.5,
+      0
+    ],
+    "allowed_food_effects": [
+      "minecraft:strength"
+    ],
+    "blocked_food_effects": [
+      "minecraft:poison"
+    ]
+  }
+}

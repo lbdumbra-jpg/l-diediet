@@ -1,16 +1,19 @@
 {
     "required": true,
     "minVersion": "0.8",
-    "package": "com.levbu.ldiediet.mixin",
+    "package": "com.lumbra.ldiediet.mixin",
     "compatibilityLevel": "JAVA_17",
     "refmap": "ldiediet.refmap.json",
     "mixins": [
         "MixinFoodData",
-        "MixinPlayer"
+        "MixinLivingEntity",
+        "MixinItemStack",
+        "MixinCakeBlock",
+        "MixinPotionItem",
+        "MixinPackRepository"
     ],
     "client": [
-        "GameRendererAccessor",
-        "MixinDietScreen"
+        "GameRendererAccessor"
     ],
     "injectors": {
         "defaultRequire": 1

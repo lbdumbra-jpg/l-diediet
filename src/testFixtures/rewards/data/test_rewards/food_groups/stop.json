@@ -1,0 +1,10 @@
+{
+  "name": "stop",
+  "hide_activation_message": true,
+  "items": [
+    "minecraft:air"
+  ],
+  "threshold": 0,
+  "require_unique": false,
+  "effects": []
+}
